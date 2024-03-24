@@ -1,0 +1,16 @@
+{
+  "files.associations": {
+    "__locale": "c",
+    "iterator": "c",
+    "string": "c",
+    "string_view": "c"
+  },
+  "editor.autoClosingDelete": "auto",
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingComments": "never",
+  "editor.autoIndent": "brackets",
+  "editor.autoClosingQuotes": "languageDefined",
+  "editor.autoClosingOvertype": "never",
+  "editor.fontSize": 14,
+  "files.autoSave": "afterDelay"
+}
