@@ -13,7 +13,7 @@ typedef struct s_list
       
 //  #define malloc(X)  NULL
 //parsing functions
-
+char		*get_next_line(int fd);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		check_char(const char *s);
 void		check_duplicated(t_list *head, int x);
@@ -54,3 +54,4 @@ void		ft_mark(t_list *lst);
 int			fin_max_index(t_list *lst);
 void		indexing(t_list **stack, t_list **new);
 void		sort_three(t_list **stack);
+void		sort5(t_list **stack, t_list **stack_b);

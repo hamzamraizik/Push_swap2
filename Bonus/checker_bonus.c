@@ -1,5 +1,4 @@
-#include "push_swap.h"
-
+#include "checker.h"
 
 void	storing(t_list **stack_a, char **res2)
 {
@@ -41,7 +40,9 @@ void	process(int argc, char **argv)
 	t_list		*stack_a;
 	t_list		*stack_b;
 	char		**res2;
+	int			i;
 
+	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
@@ -52,16 +53,38 @@ void	process(int argc, char **argv)
 		return ;
 	stack_a = ft_lstnew(&stack_a, ft_atoi((res2[0]), 0));
 	storing(&stack_a, res2);
-	if ((lstsize(stack_a) == 2))
-		ft_sa(&stack_a);
-	else if (lstsize(stack_a) == 3)
-		sort_three(&stack_a);
-	else
+	char *s;
+	while (TRUE)
 	{
-		push_to_b(&stack_a, &stack_b, 0, 0);
-		push_to_a(&stack_a, &stack_b, 0, 0);
+		s = get_next_line(0);
+		if (!s)
+			break;
+	    if (strcmp(s, "sa\n") == 0)
+	        ft_sa(&stack_a);
+	    else if (strcmp(s, "sb") == 0)
+	        ft_sb(&stack_b);
+	    else if (strcmp(s, "ss") == 0)
+	        ft_ss(&stack_a, &stack_b);
+	    else if (strcmp(s, "ra") == 0)
+	        ft_ra(&stack_a);
+	    else if (strcmp(s, "rb") == 0)
+	        rb(&stack_b);
+	    else if (strcmp(s, "rr") == 0)
+	        ft_rr(&stack_a, &stack_b);
+	    else if (strcmp(s, "rra") == 0)
+	        ft_rra(&stack_a);
+	    else if (strcmp(s, "rrb") == 0)
+	        ft_rrb(&stack_b);
+	    else if (strcmp(s, "rrr") == 0)
+	        ft_rrr(&stack_a, &stack_b);
+	    else
+	        error();
 	}
-	exit(0);
+	if (check_sorted(stack_a) == 1)
+		write(1, "OK\n", 2);
+	else
+		error();
+	free(s);
 }
 
 int	main(int argc, char **argv)

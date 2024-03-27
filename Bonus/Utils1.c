@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "checker.h"
 
 void	check_char(const char *s)
 {
@@ -29,10 +29,7 @@ void	check_duplicated(t_list *head, int x)
 	{
 		current = tmp->data;
 		if (x == current)
-		{
-			puts("!!duplicated!!");
 			error();
-		}
 		tmp = tmp->next;
 	}
 }

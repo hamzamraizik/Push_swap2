@@ -3,7 +3,7 @@
 void	ft_mark_pos(t_list *lst)
 {
 	t_list	*tmp;
-	t_list	*tmp1;	
+	t_list	*tmp1;
 	int		j;
 
 	tmp1 = lst;
@@ -38,7 +38,7 @@ void	ft_mark(t_list *lst)
 	ft_mark_pos(lst);
 }
 
-int	fin_max_index(t_list *lst)
+int	fin_max_pos(t_list *lst)
 {
 	t_list	*tmp;
 
@@ -87,7 +87,7 @@ void	push_to_a(t_list **a, t_list **b, int j, int i)
 	while (j)
 	{
 		ft_mark(*b);
-		i = fin_max_index(*b);
+		i = fin_max_pos(*b);
 		if (i <= j / 2)
 		{
 			while (i--)

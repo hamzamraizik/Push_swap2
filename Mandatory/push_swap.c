@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+
 void	storing(t_list **stack_a, char **res2)
 {
 	int		num;
@@ -40,9 +41,7 @@ void	process(int argc, char **argv)
 	t_list		*stack_a;
 	t_list		*stack_b;
 	char		**res2;
-	int			i;
 
-	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
@@ -53,35 +52,24 @@ void	process(int argc, char **argv)
 		return ;
 	stack_a = ft_lstnew(&stack_a, ft_atoi((res2[0]), 0));
 	storing(&stack_a, res2);
-	#include <string.h>
-
-	while (i < argc)
-	{
-	    if (strcmp(argv[i], "sa") == 0)
-	        ft_sa(&stack_a);
-	    else if (strcmp(argv[i], "sb") == 0)
-	        ft_sb(&stack_b);
-	    else if (strcmp(argv[i], "ss") == 0)
-	        ft_ss(&stack_a, &stack_b);
-	    else if (strcmp(argv[i], "ra") == 0)
-	        ft_ra(&stack_a);
-	    else if (strcmp(argv[i], "rb") == 0)
-	        rb(&stack_b);
-	    else if (strcmp(argv[i], "rr") == 0)
-	        ft_rr(&stack_a, &stack_b);
-	    else if (strcmp(argv[i], "rra") == 0)
-	        ft_rra(&stack_a);
-	    else if (strcmp(argv[i], "rrb") == 0)
-	        ft_rrb(&stack_b);
-	    else if (strcmp(argv[i], "rrr") == 0)
-	        ft_rrr(&stack_a, &stack_b);
-	    else
-	        error();
-	}
-	if (check_sorted(stack_a) && !stack_b)
-		write(1, "OK\n", 2);
+	if ((lstsize(stack_a) == 2))
+		ft_sa(&stack_a);
+	else if (lstsize(stack_a) == 3)
+		sort_three(&stack_a);
+	else if (lstsize(stack_a) <= 5)
+		sort5(&stack_a, &stack_b);
+	
 	else
-		error();
+	{
+		push_to_b(&stack_a, &stack_b, 0, 0);
+		push_to_a(&stack_a, &stack_b, 0, 0);
+	}
+	// while (stack_a)
+	// {
+	// 	printf("%d", stack_a->data);
+	// 	stack_a = stack_a->next;
+	// }
+	exit(0);
 }
 
 int	main(int argc, char **argv)
