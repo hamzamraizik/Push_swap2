@@ -1,30 +1,34 @@
 #include "push_swap.h"
 
-void sort_three(t_list **stack)
+void *get_max_number(t_list *stack)
 {
-	int		first;
-	int		middle;
-	int		last;
+	t_list	*tmp;
+	t_list	*max;
 
-	first = (*stack)->data;
-	middle = (*stack)->next->data;
-	last = (*stack)->next->next->data;
-	if ((first < middle) && (middle < last))
-		exit(0);
-	if ((first < middle) && (middle > last) && (last > first))
+	tmp = stack;
+	max = tmp;
+	while (tmp)
 	{
-		ft_rra(stack);
-		ft_sa(stack);
+		if (tmp->data > max->data)
+			max = tmp;
+		tmp = tmp->next;
 	}
-	if ((first > middle) && (middle < last) && (last > first))
-		ft_sa(stack);
-	if ((first < middle) && (middle > last) && (last < first))
-		ft_rra(stack);
-	if ((first > middle) && (middle < last) && (last < first))
-		ft_ra(stack);
-	if ((first > middle) && (middle > last))
-	{
-		ft_sa(stack);
-		ft_rra(stack);
-	}
+	return (max);
+}
+
+void    sort_three(t_list **lst)
+{
+    t_list	*max;
+
+    if (!check_sorted(*lst))
+    {
+        max = get_max_number(*lst);
+        if (max->data == (*lst)->data)
+            ft_ra(lst);
+        else if (max->data == (*lst)->next->data)
+            ft_rra(lst);
+        if ((*lst)->data > (*lst)->next->data)
+            ft_sa(lst);
+    }
+    return ;
 }

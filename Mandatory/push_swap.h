@@ -26,7 +26,7 @@ int			ft_isspace(char c);
 int			ft_atoi(const char *str, long i);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strdup(const char *s1);
-void		error(void);
+int		error(void);
 void		indexing(t_list **stack, t_list **new);
 char		**free_substrs(char **substrs);
 //list tools
