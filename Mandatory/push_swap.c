@@ -1,9 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/28 03:26:00 by hmraizik          #+#    #+#             */
+/*   Updated: 2024/03/28 03:26:00 by hmraizik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void f()
-{
-	system("leaks push_swap");
-}
+#include "push_swap.h"
 
 void	storing(t_list **stack_a, char **res2)
 {
@@ -23,6 +30,7 @@ void	storing(t_list **stack_a, char **res2)
 	if (check_sorted(*stack_a) == 1)
 		exit(0);
 }
+
 void	joining(int argc, char **argv, char **res)
 {
 	int	i;
@@ -70,6 +78,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+
 	process(argc, argv, &stack_a, &stack_b);
 	return (0);
 }

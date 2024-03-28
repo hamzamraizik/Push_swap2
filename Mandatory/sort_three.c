@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/28 03:26:47 by hmraizik          #+#    #+#             */
+/*   Updated: 2024/03/28 03:26:47 by hmraizik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	*get_max_number(t_list *stack)
@@ -18,7 +30,7 @@ void	*get_max_number(t_list *stack)
 
 void	sort_three(t_list **lst)
 {
-	t_list  *max;
+	t_list	*max;
 
 	if (!check_sorted(*lst))
 	{

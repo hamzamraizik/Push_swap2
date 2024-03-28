@@ -1,6 +1,18 @@
-#include "libc.h"
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/28 03:26:06 by hmraizik          #+#    #+#             */
+/*   Updated: 2024/03/28 03:26:35 by hmraizik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include <limits.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
@@ -10,7 +22,7 @@ typedef struct s_list
 	int				position;
 	struct s_list	*next;
 }		t_list;
-      
+
 //  #define malloc(X)  NULL
 //parsing functions
 char		*get_next_line(int fd);
@@ -26,7 +38,7 @@ int			ft_isspace(char c);
 int			ft_atoi(const char *str, long i);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strdup(const char *s1);
-int		error(void);
+int			error(void);
 void		indexing(t_list **stack, t_list **new);
 char		**free_substrs(char **substrs);
 //list tools
