@@ -4,10 +4,15 @@
     "iterator": "c",
     "string": "c",
     "string_view": "c",
-    "push_swap.h": "c"
+    "push_swap.h": "c",
+    "__bit_reference": "c",
+    "algorithm": "c",
+    "bitset": "c",
+    "chrono": "c",
+    "unordered_map": "c"
   },
-  "editor.autoClosingDelete": "auto",
-  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingBrackets": "languageDefined",
   "editor.autoClosingComments": "never",
   "editor.autoIndent": "brackets",
   "editor.autoClosingQuotes": "languageDefined",

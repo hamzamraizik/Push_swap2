@@ -1,5 +1,9 @@
 #include "push_swap.h"
 
+void f()
+{
+	system("leaks push_swap");
+}
 
 void	storing(t_list **stack_a, char **res2)
 {
@@ -19,7 +23,6 @@ void	storing(t_list **stack_a, char **res2)
 	if (check_sorted(*stack_a) == 1)
 		exit(0);
 }
-
 void	joining(int argc, char **argv, char **res)
 {
 	int	i;
@@ -35,45 +38,38 @@ void	joining(int argc, char **argv, char **res)
 	}
 }
 
-void	process(int argc, char **argv)
+void	process(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 {
 	char		*res;
-	t_list		*stack_a;
-	t_list		*stack_b;
 	char		**res2;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	(*stack_a) = NULL;
+	(*stack_b) = NULL;
 	if (argc == 1)
 		exit(0);
 	joining(argc, argv, &res);
 	res2 = ft_split(res, ' ', 0);
 	if (!res2)
 		return ;
-	stack_a = ft_lstnew(&stack_a, ft_atoi((res2[0]), 0));
-	storing(&stack_a, res2);
-	if ((lstsize(stack_a) == 2))
-		ft_sa(&stack_a);
-	else if (lstsize(stack_a) == 3)
-		sort_three(&stack_a);
-	else if (lstsize(stack_a) <= 5)
-		sort5(&stack_a, &stack_b);
-	
+	(*stack_a) = ft_lstnew(stack_a, ft_atoi((res2[0]), 0));
+	storing(stack_a, res2);
+	if ((lstsize((*stack_a)) == 2))
+		ft_sa(stack_a);
+	else if (lstsize((*stack_a)) == 3)
+		sort_three(stack_a);
+	else if (lstsize((*stack_a)) <= 5)
+		sort5(&(*stack_a), stack_b);
 	else
 	{
-		push_to_b(&stack_a, &stack_b, 0, 0);
-		push_to_a(&stack_a, &stack_b, 0, 0);
+		push_to_b(stack_a, stack_b, 0, 0);
+		push_to_a(stack_a, stack_b, 0, 0);
 	}
-	// while (stack_a)
-	// {
-	// 	printf("%d", stack_a->data);
-	// 	stack_a = stack_a->next;
-	// }
-	exit(0);
 }
 
 int	main(int argc, char **argv)
 {
-	process(argc, argv);
+	t_list	*stack_a;
+	t_list	*stack_b;
+	process(argc, argv, &stack_a, &stack_b);
 	return (0);
 }

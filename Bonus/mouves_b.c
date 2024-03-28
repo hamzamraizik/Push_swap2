@@ -14,7 +14,6 @@ void	rb(t_list **b)
 	(*b) = (*b)->next;
 	(*b)->previus->next = NULL;
 	(*b)->previus = NULL;
-	write(1, "rb\n", 3);
 }
 
 void	ft_pb(t_list **a, t_list **b)
@@ -40,7 +39,6 @@ void	ft_pb(t_list **a, t_list **b)
 		*b = tmp;
 		(*b)->previus = NULL;
 	}
-	write(1, "pb\n", 3);
 }
 
 void	ft_rrb(t_list **stack_b)
@@ -57,5 +55,4 @@ void	ft_rrb(t_list **stack_b)
 	tmp->previus->next = NULL;
 	*stack_b = tmp;
 	(*stack_b)->previus = NULL;
-	write(1, "rrb\n", 4);
 }

@@ -56,8 +56,6 @@ void	push_to_b(t_list **a, t_list **b, int i, int x)
 {
 	t_list	*tmp;
 
-	// if (lstsize(*a) <= 5)
-	// 	check_if_5_or_less(a, b);
 	if (lstsize(*a) <= 100)
 		x = 16;
 	else

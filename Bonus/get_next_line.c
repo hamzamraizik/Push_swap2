@@ -6,7 +6,7 @@
 /*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 15:37:18 by hmraizik          #+#    #+#             */
-/*   Updated: 2024/03/25 01:57:56 by hmraizik         ###   ########.fr       */
+/*   Updated: 2024/03/28 02:07:40 by hmraizik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ static char	*ft_join(char *s1, char *s2)
 	size_t		i;
 
 	i = 0;
-		// printf("#s1 ----->%s#\n", s1);
-		// printf("#s2 ------>%s#\n", s2);
-	
 	if (!s1)
 		return (free(s1), s1 = NULL, NULL);
 	s1_len = ft_strlen(s1);
@@ -95,7 +92,6 @@ static char	*get_read(int fd, char *line)
 			return (free(line), free(buff), NULL);
 		buff[count] = '\0';
 		line = ft_join(line, buff);
-		
 	}
 	ft_free(&buff);
 	return (line);

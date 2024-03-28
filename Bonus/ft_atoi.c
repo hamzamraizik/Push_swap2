@@ -1,11 +1,5 @@
 #include "checker.h"
 
-void	error(void)
-{
-	write(1, "Error\n", 6);
-	exit(1);
-}
-
 int	ft_isspace(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t' || c == '\v'
@@ -16,7 +10,7 @@ long	ft_isdigit(long i)
 {
 	return (i >= '0' && i <= '9');
 }
- 
+
 int	ft_atoi(const char *str, long i)
 {
 	int					sign;

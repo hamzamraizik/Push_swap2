@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/28 02:33:04 by hmraizik          #+#    #+#             */
+/*   Updated: 2024/03/28 02:37:33 by hmraizik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
-	return(-1);
+	return (-1);
 }
 
 int	ft_isspace(char c)
@@ -20,12 +32,13 @@ long	ft_isdigit(long i)
 
 int	ft_atoi(const char *str, long i)
 {
-	int					sign;
-	int				result;
+	int	sign;
+	int	result;
+	int	number;
 
 	sign = 1;
 	result = 0;
-	int number = 0;
+	number = 0;
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -37,11 +50,10 @@ int	ft_atoi(const char *str, long i)
 	(str[i] == '\0' && (error()));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = number * 10 + str[i] - '0';
-		if((result < number && sign == 1) || (-result > number && sign == -1))
-			error();
+		result = number * 10 + str[i++] - '0';
+		if ((result < number && sign == 1) || (-result > number && sign == -1))
+			error ();
 		number = result;
-		i++;
 	}
 	(str[i]) && (error());
 	return (result * sign);

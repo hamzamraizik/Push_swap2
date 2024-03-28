@@ -60,5 +60,7 @@ void		push_to_a(t_list **a, t_list **b, int j, int i);
 void		ft_mark(t_list *lst);
 int			fin_max_index(t_list *lst);
 void		indexing(t_list **stack, t_list **new);
-
+//for Bonus
+int			ft_strcmp(char *s1, const char *s2);
+void		joining(int argc, char **argv, char **res);
 #endif

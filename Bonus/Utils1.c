@@ -37,18 +37,13 @@ void	check_duplicated(t_list *head, int x)
 int	check_sorted(t_list *head)
 {
 	t_list		*tmp;
-	int			current;
-	int			next;
 
 	tmp = head;
-	while (tmp && tmp->next)
+	while (tmp->next)
 	{
-		current = tmp->data;
-		next = tmp->next->data;
-		if (current < next)
-			tmp = tmp->next;
-		else if (current > next)
+		if (tmp->next->data < tmp->data)
 			return (0);
+		tmp = tmp->next;
 	}
 	return (1);
 }
