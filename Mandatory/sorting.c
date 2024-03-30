@@ -6,114 +6,89 @@
 /*   By: hmraizik <hmraizik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 03:26:52 by hmraizik          #+#    #+#             */
-/*   Updated: 2024/03/28 03:26:52 by hmraizik         ###   ########.fr       */
+/*   Updated: 2024/03/30 07:02:57 by hmraizik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_mark_pos(t_list *lst)
+void	positioning(t_list *stack)
 {
-	t_list	*tmp;
-	t_list	*tmp1;
-	int		j;
-
-	tmp1 = lst;
-	while (tmp1)
-	{
-		j = 0;
-		tmp = lst;
-		while (tmp)
-		{
-			if (tmp->data < tmp1->data)
-				j++;
-			tmp = tmp->next;
-		}
-		tmp1->index = j;
-		tmp1 = tmp1->next;
-	}
-}
-
-void	ft_mark(t_list *lst)
-{
-	t_list	*tmp;
 	int		position;
 
-	tmp = lst;
 	position = 0;
-	while (tmp)
+	while (stack)
 	{
-		tmp->position = position;
+		stack->position = position;
 		position++;
-		tmp = tmp->next;
+		stack = stack->next;
 	}
-	ft_mark_pos(lst);
 }
 
-int	fin_max_pos(t_list *lst)
+int	the_biggest(t_list *stack)
 {
 	t_list	*tmp;
 
-	tmp = lst;
+	tmp = stack;
 	while (tmp)
 	{
-		if (tmp->data > lst->data)
-			lst = tmp;
+		if (tmp->data > stack->data)
+			stack = tmp;
 		tmp = tmp->next;
 	}
-	return (lst->position);
+	return (stack->position);
 }
 
-void	push_to_b(t_list **a, t_list **b, int i, int x)
+// the threshold , smaller threshold may
+	//result in more frequent but smaller movements of elements to stack_b
+		// big treshold may result fewwer but more movement;
+void	semi_sorting(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp;
+	int	i;
+	int	threshold;
 
-	if (lstsize(*a) <= 100)
-		x = 16;
-	else
-		x = 34;
-	while (*a)
+	i = 0;
+	while (*stack_a)
 	{
-		tmp = *a;
-		if (tmp->index <= i)
+		if (lstsize(*stack_a) <= 100)
+			threshold = lstsize(*stack_a) / 4;
+		else
+			threshold = lstsize(*stack_a) / 8;
+		if ((*stack_a)->index <= i)
 		{
-			ft_pb(a, b);
+			ft_pb(stack_a, stack_b);
 			i++;
 		}
-		else if (tmp->index < i + x)
+		else if ((*stack_a)->index <= i + threshold)
 		{
-			ft_pb(a, b);
-			rb(b);
+			ft_pb(stack_a, stack_b);
+			//it will in the top i shold make it in the bottom , the smaller became in the top
+			rb(stack_b);
 			i++;
 		}
 		else
-			ft_ra(a);
+			ft_ra(stack_a);
 	}
 }
 
-void	push_to_a(t_list **a, t_list **b, int j, int i)
+void	last_sorting(t_list **stack_a, t_list **stack_b, int j, int i)
 {
-	j = lstsize(*b);
-	while (j)
+	j = lstsize(*stack_b) + 1;
+	while (--j)
 	{
-		ft_mark(*b);
-		i = fin_max_pos(*b);
+		positioning(*stack_b);
+		i = the_biggest(*stack_b);
 		if (i <= j / 2)
 		{
 			while (i--)
-				rb(b);
-			ft_pa(b, a);
+				rb(stack_b);
+			ft_pa(stack_b, stack_a);
 		}
 		else
 		{
-			while (i < (j - 1))
-			{
-				ft_rrb(b);
-				i++;
-			}
-			ft_rrb(b);
-			ft_pa(b, a);
+			while (i++ < j)
+				ft_rrb(stack_b);
+			ft_pa(stack_b, stack_a);
 		}
-		j--;
 	}
 }
